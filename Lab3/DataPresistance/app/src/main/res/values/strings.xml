@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Intent</string>
+    <string name="message">Message</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="phone_number">01288086428</string>
+    <string name="enter_name_hint">Enter your name here</string>
+    <string name="cancel">Cancel</string>
+    <string name="ws">WS</string>
+    <string name="rs">RS</string>
+    <string name="wis">WIS</string>
+    <string name="ris">RIS</string>
+    <string name="wsql">wSQL</string>
+    <string name="rsql">rSQL</string>
+</resources>
