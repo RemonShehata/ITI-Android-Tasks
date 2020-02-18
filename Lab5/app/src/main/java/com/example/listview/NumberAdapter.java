@@ -28,20 +28,56 @@ public class NumberAdapter extends ArrayAdapter<Number> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        View view = null;
-        LayoutInflater layoutInflater = (LayoutInflater)
-                this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rowView = null;
+        ViewHolder viewHolder = null;
 
-        view = layoutInflater.inflate(R.layout.custom_cell, parent, false);
-
-        ImageView imageView = view.findViewById(R.id.imageView);
-        TextView title = view.findViewById(R.id.txtTitle);
-        TextView desc = view.findViewById(R.id.txtDesc);
+        if (rowView == null) {
+            LayoutInflater layoutInflater =
+                    (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            rowView = layoutInflater.inflate(R.layout.custom_cell, parent, false);
+            viewHolder = new ViewHolder(rowView);
+            rowView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) rowView.getTag();
+        }
 
         this.currentNumber = this.numbers.get(position);
-        imageView.setImageResource(currentNumber.getImg());
-        title.setText(currentNumber.getTitle());
-        desc.setText(currentNumber.getDesc());
-        return view;
+        viewHolder.getTitle().setText(currentNumber.getTitle());
+        viewHolder.getDesc().setText(currentNumber.getDesc());
+        viewHolder.getImg().setImageResource(currentNumber.getImg());
+
+        return rowView;
+    }
+
+    public class ViewHolder {
+        private View convertView;
+        private TextView title;
+        private TextView desc;
+        private ImageView img;
+
+        ViewHolder(View view) {
+            this.convertView = view;
+        }
+
+        public TextView getTitle() {
+            if (title == null) {
+                title = convertView.findViewById(R.id.txtTitle);
+            }
+            return title;
+        }
+
+        public TextView getDesc() {
+            if (desc == null) {
+                desc = convertView.findViewById(R.id.txtDesc);
+            }
+            return desc;
+        }
+
+        public ImageView getImg() {
+            if (img == null) {
+                img = convertView.findViewById(R.id.imageView);
+            }
+            return img;
+        }
     }
 }
