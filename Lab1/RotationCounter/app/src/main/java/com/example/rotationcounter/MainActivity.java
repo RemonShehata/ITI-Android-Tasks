@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             intVal = savedInstanceState.getInt("val");
         }
-        counter.setText("" + intVal);
+        counter.setText("" + ++intVal);
         Log.i(TAG, "OnCreate");
     }
 
@@ -57,13 +57,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("val", ++intVal);
+        outState.putInt("val", intVal);
         Log.i(TAG, "OnSaveInstanceState");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
+
         Log.i(TAG, "OnRestart");
     }
 }
