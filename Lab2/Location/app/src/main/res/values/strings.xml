@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Location</string>
+    <string name="show_loc">Show Location</string>
+    <string name="get_geo">Get Geo Location</string>
+    <string name="service_not_available">Service is not avialable</string>
+    <string name="invalid_lat_long_used">the Lat or Long used is not valid</string>
+    <string name="no_address_found">No address found</string>
+    <string name="address_found">Address found</string>
+</resources>
