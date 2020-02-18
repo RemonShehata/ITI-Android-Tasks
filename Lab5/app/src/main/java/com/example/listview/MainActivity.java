@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.myList);
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, days);
+                R.layout.custom_cell, R.id.textView, days);
 
         listView.setAdapter(adapter);
 
