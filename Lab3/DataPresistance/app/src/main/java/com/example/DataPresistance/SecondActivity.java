@@ -27,6 +27,7 @@ public class SecondActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "activity2";
     public static final String TAG = "SecondActivity";
     public static final String FILE_NAME = "myFile";
+    private static final String SEPERATOR = "*";
 
     private String phone;
     private String message;
@@ -54,7 +55,7 @@ public class SecondActivity extends AppCompatActivity {
         close = findViewById(R.id.btnClose);
         writeSharedPrefs = findViewById(R.id.btnWs);
         readSharedPrefs = findViewById(R.id.btnRs);
-        writeInputStream = findViewById(R.id.btnReadIS);
+        writeInputStream = findViewById(R.id.btnWriteIS);
         readInputStream = findViewById(R.id.btnReadIS);
         writeSQL = findViewById(R.id.btnWriteeSQL);
         readSQL = findViewById(R.id.btnReadSQL);
@@ -112,6 +113,8 @@ public class SecondActivity extends AppCompatActivity {
                 try {
                     FileOutputStream fileOutputStream = openFileOutput(FILE_NAME, MODE_PRIVATE);
                     fileOutputStream.write(phoneText.getText().toString().getBytes());
+                    fileOutputStream.write(SEPERATOR.getBytes());
+                    fileOutputStream.write(messageText.getText().toString().getBytes());
                     fileOutputStream.close();
                     clearFields();
                 } catch (java.io.FileNotFoundException nfe) {
@@ -130,7 +133,10 @@ public class SecondActivity extends AppCompatActivity {
                     FileInputStream fileInputStream = openFileInput(FILE_NAME);
                     byte[] data = new byte[fileInputStream.available()];
                     fileInputStream.read(data);
-                    phoneText.setText(new String(data));
+                    String strData = new String(data);
+                    int sepIndex = strData.indexOf('*');
+                    phoneText.setText(strData.substring(0, sepIndex));
+                    messageText.setText(strData.substring(sepIndex + 1, strData.length()));
 
                     fileInputStream.close();
                 } catch (java.io.FileNotFoundException nfe) {
