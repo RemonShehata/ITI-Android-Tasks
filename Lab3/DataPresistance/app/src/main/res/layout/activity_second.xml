@@ -81,12 +81,11 @@
         android:id="@+id/btnReadSQL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="100dp"
         android:text="@string/rsql"
-        app:layout_constraintBottom_toTopOf="@+id/btnClose"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnReadIS"
-        app:layout_constraintVertical_bias="0.281" />
+        app:layout_constraintTop_toBottomOf="@+id/btnReadIS" />
 
     <Button
         android:id="@+id/btnWriteeSQL"
