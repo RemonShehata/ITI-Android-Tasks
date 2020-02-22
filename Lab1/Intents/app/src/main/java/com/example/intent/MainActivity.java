@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     Button next;
     EditText phoneText;
     EditText messageText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void close(View view) {
-        finish();
+        //finish();
+
+        // Create the text message with a string
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "text sms");
+        sendIntent.setType("text/plain");
+
+        Intent chooser = Intent.createChooser(sendIntent,"choose an app");
+// Verify that the intent will resolve to an activity
+        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(chooser);
+        }
     }
 }

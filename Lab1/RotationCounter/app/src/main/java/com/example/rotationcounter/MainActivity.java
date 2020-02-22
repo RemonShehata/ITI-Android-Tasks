@@ -7,9 +7,9 @@ import android.util.Log;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
     int intVal;
     public static final String TAG = "Rotation";
-
     TextView counter;
 
     @Override
