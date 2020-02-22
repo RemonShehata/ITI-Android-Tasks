@@ -19,6 +19,7 @@ import android.widget.TextView;
 public class TextFragment extends Fragment {
 
     private TextView counterView;
+    private int counter;
 
     public TextFragment() {
         // Required empty public constructor
@@ -36,23 +37,24 @@ public class TextFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-    }
-
-    public interface Comunicatable {
-        void respond(int count);
-    }
-
-    public void updateCounter(int counter){
-
+        if(savedInstanceState != null) {
+            counter = savedInstanceState.getInt("c");
+        }
         counterView.setText(counter + "");
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("c",);
-
+        outState.putInt("c", counter);
     }
 
+    public void updateCounter() {
+        counter++;
+        counterView.setText(counter + "");
+    }
+
+    public interface Comunicatable {
+        void respond(int count);
+    }
 }

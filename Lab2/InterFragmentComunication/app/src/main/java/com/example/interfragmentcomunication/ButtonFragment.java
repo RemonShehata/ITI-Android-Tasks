@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -31,12 +32,11 @@ public class ButtonFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_button, container, false);
         button = root.findViewById(R.id.button);
-
         return root;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         comunicatable = (TextFragment.Comunicatable) getActivity();
         button.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +46,4 @@ public class ButtonFragment extends Fragment {
             }
         });
     }
-
-
 }
